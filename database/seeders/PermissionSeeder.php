@@ -16,6 +16,7 @@ class PermissionSeeder extends Seeder
     {
         $actions = ['create', 'view', 'viewAny', 'update', 'delete'];
         $modules = ['student', 'officer', 'class', 'tuition'];
+        $specialPermissions = ['create payment', 'viewAny payment', 'view payment', 'create report'];
 
         $permissions = [];
 
@@ -25,6 +26,12 @@ class PermissionSeeder extends Seeder
 
                 array_push($permissions, $permission);
             }
+        }
+
+        foreach ($specialPermissions as $specialPermission) {
+            $permission = ['name' => $specialPermission, 'created_at' => now(), 'updated_at' => now()];
+
+            array_push($permissions, $permission);
         }
 
         Permission::insert($permissions);
