@@ -15,7 +15,7 @@ class CreateOfficersTable extends Migration
     {
         Schema::create('officers', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_petugas');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
