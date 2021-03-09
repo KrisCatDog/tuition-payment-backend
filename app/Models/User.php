@@ -21,6 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'role_id',
         'name',
         'username',
         'password',
@@ -35,4 +36,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
 }
