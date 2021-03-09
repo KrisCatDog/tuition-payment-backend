@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClassRequest;
+use App\Http\Resources\ClassCollection;
+use App\Http\Resources\ClassResource;
 use App\Models\IClass;
 use Illuminate\Http\Request;
 
@@ -15,18 +18,18 @@ class ClassController extends Controller
      */
     public function index()
     {
-        //
+        return new ClassCollection(IClass::paginate());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreClassRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClassRequest $request)
     {
-        //
+        return (new ClassResource(IClass::create($request->validated())))->additional(['message' => "Class has been Submitted successfully"]);
     }
 
     /**
