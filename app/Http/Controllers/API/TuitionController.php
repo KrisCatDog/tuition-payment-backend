@@ -41,7 +41,7 @@ class TuitionController extends Controller
      */
     public function show(Tuition $tuition)
     {
-        //
+        return new TuitionResource($tuition);
     }
 
     /**
