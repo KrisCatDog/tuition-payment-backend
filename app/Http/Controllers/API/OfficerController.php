@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOfficerRequest;
+use App\Http\Requests\UpdateOfficerRequest;
 use App\Http\Resources\OfficerCollection;
 use App\Http\Resources\OfficerResource;
 use App\Models\Officer;
@@ -55,9 +56,11 @@ class OfficerController extends Controller
      * @param  \App\Models\Officer  $officer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Officer $officer)
+    public function update(UpdateOfficerRequest $request, Officer $officer)
     {
-        //
+        $officer->user()->update($request->validated());
+
+        return new OfficerResource($officer->load('user'));
     }
 
     /**
