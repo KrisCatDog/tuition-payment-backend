@@ -45,7 +45,7 @@ class OfficerController extends Controller
      */
     public function show(Officer $officer)
     {
-        //
+        return new OfficerResource($officer);
     }
 
     /**
