@@ -40,7 +40,7 @@ class MajorController extends Controller
      */
     public function show(Major $major)
     {
-        //
+        return new MajorResource($major);
     }
 
     /**
