@@ -25,7 +25,7 @@ class UpdateStudentRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . auth()->user()->id,
+            'username' => 'required|string|max:255|unique:users,username,' . $this->route('student')->user->id,
             'class_id' => 'required',
             'tuition_id' => 'required',
             'nisn' => 'required|string|max:255',
