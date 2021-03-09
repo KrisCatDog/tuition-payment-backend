@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClassRequest;
+use App\Http\Requests\UpdateClassRequest;
 use App\Http\Resources\ClassCollection;
 use App\Http\Resources\ClassResource;
 use App\Models\IClass;
-use Illuminate\Http\Request;
 
 class ClassController extends Controller
 {
@@ -46,13 +46,15 @@ class ClassController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateClassRequest  $request
      * @param  \App\Models\IClass  $class
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IClass $class)
+    public function update(UpdateClassRequest $request, IClass $class)
     {
-        //
+        $class->update($request->validated());
+
+        return (new ClassResource($class))->additional(['message' => "Class updated successfully"]);
     }
 
     /**
@@ -63,6 +65,8 @@ class ClassController extends Controller
      */
     public function destroy(IClass $class)
     {
-        //
+        $class->delete();
+
+        return response(['message' => 'Class deleted successfully']);
     }
 }
