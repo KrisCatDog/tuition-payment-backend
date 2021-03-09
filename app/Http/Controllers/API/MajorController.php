@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreMajorRequest;
 use App\Http\Resources\MajorCollection;
+use App\Http\Resources\MajorResource;
 use App\Models\Major;
 use Illuminate\Http\Request;
 
@@ -22,12 +24,12 @@ class MajorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreMajorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMajorRequest $request)
     {
-        //
+        return (new MajorResource(Major::create($request->validated())))->additional(['message' => "Major has been Submitted successfully"]);
     }
 
     /**
