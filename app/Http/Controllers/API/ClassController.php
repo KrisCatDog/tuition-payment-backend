@@ -40,7 +40,7 @@ class ClassController extends Controller
      */
     public function show(IClass $class)
     {
-        //
+        return new ClassResource($class);
     }
 
     /**
