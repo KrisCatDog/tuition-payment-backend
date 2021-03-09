@@ -66,6 +66,8 @@ class TuitionController extends Controller
      */
     public function destroy(Tuition $tuition)
     {
-        //
+        $tuition->delete();
+
+        return response(['message' => 'Tuition deleted successfully']);
     }
 }
