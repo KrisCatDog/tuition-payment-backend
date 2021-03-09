@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MajorCollection;
 use App\Models\Major;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class MajorController extends Controller
      */
     public function index()
     {
-        //
+        return new MajorCollection(Major::paginate());
     }
 
     /**
