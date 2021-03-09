@@ -71,6 +71,8 @@ class OfficerController extends Controller
      */
     public function destroy(Officer $officer)
     {
-        //
+        $officer->user()->delete();
+
+        return response(['message' => 'Officer deleted successfully']);
     }
 }
