@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMajorRequest;
+use App\Http\Requests\UpdateMajorRequest;
 use App\Http\Resources\MajorCollection;
 use App\Http\Resources\MajorResource;
 use App\Models\Major;
@@ -46,13 +47,15 @@ class MajorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UpdateMajorRequest  $request
      * @param  \App\Models\Major  $major
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Major $major)
+    public function update(UpdateMajorRequest $request, Major $major)
     {
-        //
+        $major->update($request->validated());
+
+        return (new MajorResource($major))->additional(['message' => "Major updated successfully"]);
     }
 
     /**
