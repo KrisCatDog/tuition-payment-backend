@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ClassController;
+use App\Http\Controllers\API\MajorController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\TuitionController;
 use Illuminate\Http\Request;
@@ -25,4 +25,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('students', StudentController::class);
     Route::apiResource('tuitions', TuitionController::class);
     Route::apiResource('classes', ClassController::class);
+    Route::apiResource('majors', MajorController::class);
 });
