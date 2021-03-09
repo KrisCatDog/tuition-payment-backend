@@ -53,7 +53,9 @@ class TuitionController extends Controller
      */
     public function update(UpdateTuitionRequest $request, Tuition $tuition)
     {
-        //
+        $tuition->update($request->validated());
+
+        return (new TuitionResource($tuition))->additional(['message' => "Tuition updated successfully"]);
     }
 
     /**
