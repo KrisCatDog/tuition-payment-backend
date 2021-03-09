@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreOfficerRequest;
 use App\Http\Resources\OfficerCollection;
+use App\Http\Resources\OfficerResource;
 use App\Models\Officer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OfficerController extends Controller
@@ -22,12 +25,16 @@ class OfficerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreOfficerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOfficerRequest $request)
     {
-        //
+        return (new OfficerResource(User::create(array_merge(
+            $request->validated(),
+            ['role_id' => 2, 'password' => bcrypt($request->password)]
+        ))->officer()->create()))
+            ->additional(['message' => "Officer has been Submitted successfully"]);
     }
 
     /**
