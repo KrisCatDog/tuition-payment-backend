@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTuitionRequest;
 use App\Http\Requests\UpdateTuitionRequest;
 use App\Http\Resources\TuitionCollection;
+use App\Http\Resources\TuitionResource;
 use App\Models\Tuition;
 
 class TuitionController extends Controller
@@ -28,7 +29,8 @@ class TuitionController extends Controller
      */
     public function store(StoreTuitionRequest $request)
     {
-        //
+        return (new TuitionResource(Tuition::create($request->validated())))
+            ->additional(['message' => "Tuition has been Submitted successfully"]);
     }
 
     /**
