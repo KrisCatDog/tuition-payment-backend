@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OfficerCollection;
 use App\Models\Officer;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class OfficerController extends Controller
      */
     public function index()
     {
-        //
+        return new OfficerCollection(Officer::with('user')->paginate());
     }
 
     /**
