@@ -66,6 +66,8 @@ class MajorController extends Controller
      */
     public function destroy(Major $major)
     {
-        //
+        $major->delete();
+
+        return response(['message' => 'Major deleted successfully']);
     }
 }
