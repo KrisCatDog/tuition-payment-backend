@@ -9,7 +9,6 @@ use App\Http\Resources\StudentCollection;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class StudentController extends Controller
@@ -37,7 +36,7 @@ class StudentController extends Controller
         $user = User::create(array_merge(Arr::only($data, ['name', 'username', 'password']), ['role_id' => 3]));
         $student = $user->student()->create(Arr::except($data, ['name', 'username', 'password', 'password_confirmation']));
 
-        return new StudentResource($student);
+        return (new StudentResource($student))->additional(['message' => "Student has been Submitted successfully"]);
     }
 
     /**
@@ -65,7 +64,7 @@ class StudentController extends Controller
         $student->user()->update(Arr::only($data, ['name', 'username']));
         $student->update(Arr::except($data, ['name', 'username']));
 
-        return new StudentResource($student);
+        return (new StudentResource($student))->additional(['message' => "Student updated successfully"]);
     }
 
     /**
@@ -76,6 +75,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->user()->delete();
+
+        return response(['message' => 'Student deleted successfully']);
     }
 }
