@@ -33,7 +33,10 @@ class StudentController extends Controller
     {
         $data = $request->validated();
 
-        $user = User::create(array_merge(Arr::only($data, ['name', 'username', 'password']), ['role_id' => 3]));
+        $user = User::create(array_merge(
+            Arr::only($data, ['name', 'username']),
+            ['role_id' => 3, 'password' => bcrypt($data['password'])]
+        ));
         $student = $user->student()->create(Arr::except($data, ['name', 'username', 'password', 'password_confirmation']));
 
         return (new StudentResource($student->load('user', 'class', 'tuition', 'user.role')))
