@@ -29,7 +29,7 @@ class ClassController extends Controller
      */
     public function store(StoreClassRequest $request)
     {
-        return (new ClassResource(IClass::create($request->validated())))
+        return (new ClassResource(IClass::create($request->validated())->load('major')))
             ->additional(['message' => "Class has been Submitted successfully"]);
     }
 
