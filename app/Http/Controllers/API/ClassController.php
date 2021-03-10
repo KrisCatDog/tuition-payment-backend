@@ -18,7 +18,7 @@ class ClassController extends Controller
      */
     public function index()
     {
-        return new ClassCollection(IClass::paginate());
+        return new ClassCollection(IClass::with('major')->paginate());
     }
 
     /**
@@ -29,7 +29,8 @@ class ClassController extends Controller
      */
     public function store(StoreClassRequest $request)
     {
-        return (new ClassResource(IClass::create($request->validated())))->additional(['message' => "Class has been Submitted successfully"]);
+        return (new ClassResource(IClass::create($request->validated())))
+            ->additional(['message' => "Class has been Submitted successfully"]);
     }
 
     /**
@@ -40,7 +41,7 @@ class ClassController extends Controller
      */
     public function show(IClass $class)
     {
-        return new ClassResource($class);
+        return new ClassResource($class->load('major'));
     }
 
     /**
@@ -54,7 +55,8 @@ class ClassController extends Controller
     {
         $class->update($request->validated());
 
-        return (new ClassResource($class))->additional(['message' => "Class updated successfully"]);
+        return (new ClassResource($class->load('major')))
+            ->additional(['message' => "Class updated successfully"]);
     }
 
     /**

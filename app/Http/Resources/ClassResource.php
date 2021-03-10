@@ -16,7 +16,7 @@ class ClassResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'major_id' => $this->major_id,
+            'major' => new MajorResource($this->major),
             'nama_kelas' => $this->nama_kelas,
             'created_at' => $this->created_at->toFormattedDateString(),
             'updated_at' => $this->updated_at->toFormattedDateString(),
