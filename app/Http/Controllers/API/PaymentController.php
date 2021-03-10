@@ -30,7 +30,8 @@ class PaymentController extends Controller
     {
         return (new PaymentResource(auth()->user()->officer->payments()->create(
             array_merge($request->validated(), ['paid_at' => now()])
-        )))->additional(['message' => "Payment has been Submitted successfully"]);
+        )->load('officer', 'student')))
+            ->additional(['message' => "Payment has been Submitted successfully"]);
     }
 
     /**
@@ -41,6 +42,6 @@ class PaymentController extends Controller
      */
     public function show(Payment $payment)
     {
-        return new PaymentResource($payment);
+        return new PaymentResource($payment->load('officer', 'student'));
     }
 }
