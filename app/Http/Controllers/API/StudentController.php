@@ -20,7 +20,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return new StudentCollection(Student::with('user', 'class', 'tuition')->paginate());
+        return new StudentCollection(Student::with('user', 'class', 'tuition', 'user.role')->paginate());
     }
 
     /**
@@ -36,7 +36,7 @@ class StudentController extends Controller
         $user = User::create(array_merge(Arr::only($data, ['name', 'username', 'password']), ['role_id' => 3]));
         $student = $user->student()->create(Arr::except($data, ['name', 'username', 'password', 'password_confirmation']));
 
-        return (new StudentResource($student->load('user', 'class', 'tuition')))
+        return (new StudentResource($student->load('user', 'class', 'tuition', 'user.role')))
             ->additional(['message' => "Student has been Submitted successfully"]);
     }
 
@@ -48,7 +48,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return new StudentResource($student->load('user', 'class', 'tuition'));
+        return new StudentResource($student->load('user', 'class', 'tuition', 'user.role'));
     }
 
     /**
@@ -65,7 +65,7 @@ class StudentController extends Controller
         $student->user()->update(Arr::only($data, ['name', 'username']));
         $student->update(Arr::except($data, ['name', 'username']));
 
-        return (new StudentResource($student->load('user', 'class', 'tuition')))
+        return (new StudentResource($student->load('user', 'class', 'tuition', 'user.role')))
             ->additional(['message' => "Student updated successfully"]);
     }
 
