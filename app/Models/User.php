@@ -37,6 +37,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
+
     public function student()
     {
         return $this->hasOne(Student::class);

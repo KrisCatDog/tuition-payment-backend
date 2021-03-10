@@ -14,4 +14,14 @@ class Payment extends Model
     protected $casts = [
         'paid_at' => 'datetime',
     ];
+
+    public function officer()
+    {
+        return $this->belongsTo(Officer::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }
