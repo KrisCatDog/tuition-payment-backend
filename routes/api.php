@@ -6,7 +6,7 @@ use App\Http\Controllers\API\OfficerController;
 use App\Http\Controllers\API\PaymentController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\TuitionController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('user', function (Request $request) {
-        return $request->user();
-    });
+    Route::get('user', [UserController::class, 'authenticated']);
     Route::apiResource('students', StudentController::class);
     Route::apiResource('tuitions', TuitionController::class);
     Route::apiResource('classes', ClassController::class);
