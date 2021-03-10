@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\ClassController;
 use App\Http\Controllers\API\MajorController;
 use App\Http\Controllers\API\OfficerController;
+use App\Http\Controllers\API\PaymentController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\TuitionController;
 use Illuminate\Http\Request;
@@ -28,4 +29,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('classes', ClassController::class);
     Route::apiResource('majors', MajorController::class);
     Route::apiResource('officers', OfficerController::class);
+    Route::apiResource('payments', PaymentController::class, ['except' => ['update', 'destroy']]);
 });
