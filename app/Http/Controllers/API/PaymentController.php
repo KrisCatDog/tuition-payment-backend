@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePaymentRequest;
 use App\Http\Resources\PaymentCollection;
+use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
-use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -22,12 +23,14 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StorePaymentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePaymentRequest $request)
     {
-        //
+        return (new PaymentResource(auth()->user()->officer->payments()->create(
+            array_merge($request->validated(), ['paid_at' => now()])
+        )))->additional(['message' => "Payment has been Submitted successfully"]);
     }
 
     /**
