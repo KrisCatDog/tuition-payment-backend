@@ -19,6 +19,8 @@ class PaymentResource extends JsonResource
             'student' => new StudentResource($this->student),
             'jumlah_bayar' => $this->jumlah_bayar,
             'paid_at' => $this->paid_at->toFormattedDateString(),
+            'created_at' => $this->created_at->toFormattedDateString(),
+            'updated_at' => $this->updated_at->toFormattedDateString(),
         ];
     }
 }
