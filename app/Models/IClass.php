@@ -11,4 +11,14 @@ class IClass extends Model
 
     protected $table = 'classes';
     protected $guarded = [];
+
+    public function major()
+    {
+        return $this->belongsTo(Major::class);
+    }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

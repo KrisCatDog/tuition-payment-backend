@@ -15,4 +15,19 @@ class Student extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function class()
+    {
+        return $this->belongsTo(IClass::class);
+    }
+
+    public function tuition()
+    {
+        return $this->belongsTo(Tuition::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }
