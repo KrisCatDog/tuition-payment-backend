@@ -20,7 +20,7 @@ class MajorController extends Controller
      */
     public function index(Request $request)
     {
-        return new MajorCollection(Major::paginate($request->per_page));
+        return new MajorCollection(Major::latest()->paginate($request->per_page));
     }
 
     /**
