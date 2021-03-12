@@ -8,17 +8,19 @@ use App\Http\Requests\UpdateTuitionRequest;
 use App\Http\Resources\TuitionCollection;
 use App\Http\Resources\TuitionResource;
 use App\Models\Tuition;
+use Illuminate\Http\Request;
 
 class TuitionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new TuitionCollection(Tuition::paginate());
+        return new TuitionCollection(Tuition::paginate($request->per_page));
     }
 
     /**
