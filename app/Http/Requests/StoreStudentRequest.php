@@ -30,10 +30,10 @@ class StoreStudentRequest extends FormRequest
             'password' => ['required', 'string', new Password, 'confirmed'],
             'class_id' => 'required',
             'tuition_id' => 'required',
-            'nisn' => 'required|string|max:255',
-            'nis' => 'required|string|max:255',
+            'nisn' => 'required|max:255',
+            'nis' => 'required|max:255',
             'alamat' => 'required|string',
-            'no_telp' => 'required|string|max:255',
+            'no_telp' => 'required|max:255',
         ];
     }
 }

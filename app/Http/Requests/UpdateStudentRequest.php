@@ -28,10 +28,10 @@ class UpdateStudentRequest extends FormRequest
             'username' => 'required|string|max:255|unique:users,username,' . $this->route('student')->user->id,
             'class_id' => 'required',
             'tuition_id' => 'required',
-            'nisn' => 'required|string|max:255',
-            'nis' => 'required|string|max:255',
+            'nisn' => 'required|max:255',
+            'nis' => 'required|max:255',
             'alamat' => 'required|string',
-            'no_telp' => 'required|string|max:255',
+            'no_telp' => 'required|max:255',
         ];
     }
 }
