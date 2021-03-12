@@ -24,8 +24,8 @@ class StoreTuitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'tahun' => 'required|string|max:11',
-            'nominal' => 'required|string|max:11',
+            'tahun' => 'required|max:11',
+            'nominal' => 'required|max:11',
         ];
     }
 }
