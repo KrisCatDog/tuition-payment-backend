@@ -8,17 +8,19 @@ use App\Http\Requests\UpdateClassRequest;
 use App\Http\Resources\ClassCollection;
 use App\Http\Resources\ClassResource;
 use App\Models\IClass;
+use Illuminate\Http\Request;
 
 class ClassController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new ClassCollection(IClass::with('major')->paginate());
+        return new ClassCollection(IClass::with('major')->paginate($request->per_page));
     }
 
     /**

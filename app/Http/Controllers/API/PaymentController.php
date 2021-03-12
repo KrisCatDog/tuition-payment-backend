@@ -7,17 +7,19 @@ use App\Http\Requests\StorePaymentRequest;
 use App\Http\Resources\PaymentCollection;
 use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new PaymentCollection(Payment::with('officer', 'student')->paginate());
+        return new PaymentCollection(Payment::with('officer', 'student')->paginate($request->per_page));
     }
 
     /**
