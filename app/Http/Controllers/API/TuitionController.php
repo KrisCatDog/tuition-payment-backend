@@ -20,7 +20,7 @@ class TuitionController extends Controller
      */
     public function index(Request $request)
     {
-        return new TuitionCollection(Tuition::paginate($request->per_page));
+        return new TuitionCollection(Tuition::latest()->paginate($request->per_page));
     }
 
     /**
