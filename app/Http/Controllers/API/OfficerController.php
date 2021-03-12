@@ -9,17 +9,19 @@ use App\Http\Resources\OfficerCollection;
 use App\Http\Resources\OfficerResource;
 use App\Models\Officer;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class OfficerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new OfficerCollection(Officer::with('user')->paginate());
+        return new OfficerCollection(Officer::with('user')->paginate($request->per_page));
     }
 
     /**

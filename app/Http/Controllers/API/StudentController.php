@@ -9,6 +9,7 @@ use App\Http\Resources\StudentCollection;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class StudentController extends Controller
@@ -16,11 +17,12 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new StudentCollection(Student::with('user', 'class', 'tuition', 'user.role')->paginate());
+        return new StudentCollection(Student::with('user', 'class', 'tuition', 'user.role')->paginate($request->per_page));
     }
 
     /**
