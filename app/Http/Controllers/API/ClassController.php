@@ -20,7 +20,7 @@ class ClassController extends Controller
      */
     public function index(Request $request)
     {
-        return new ClassCollection(IClass::with('major')->paginate($request->per_page));
+        return new ClassCollection(IClass::with('major')->latest()->paginate($request->per_page));
     }
 
     /**

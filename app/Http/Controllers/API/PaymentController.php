@@ -19,7 +19,7 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
-        return new PaymentCollection(Payment::with('officer', 'student')->paginate($request->per_page));
+        return new PaymentCollection(Payment::with('officer', 'student')->latest()->paginate($request->per_page));
     }
 
     /**

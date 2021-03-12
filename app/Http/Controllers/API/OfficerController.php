@@ -21,7 +21,7 @@ class OfficerController extends Controller
      */
     public function index(Request $request)
     {
-        return new OfficerCollection(Officer::with('user')->paginate($request->per_page));
+        return new OfficerCollection(Officer::with('user')->latest()->paginate($request->per_page));
     }
 
     /**
