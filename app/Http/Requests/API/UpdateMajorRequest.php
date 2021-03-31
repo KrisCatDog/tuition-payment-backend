@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateOfficerRequest extends FormRequest
+class UpdateMajorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class UpdateOfficerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . $this->route('officer')->user->id,
+            'kompetensi_keahlian' => 'required|string|max:255'
         ];
     }
 }

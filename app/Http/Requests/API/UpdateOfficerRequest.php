@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Laravel\Fortify\Rules\Password;
 
-class StoreOfficerRequest extends FormRequest
+class UpdateOfficerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,8 +25,7 @@ class StoreOfficerRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => ['required', 'string', new Password, 'confirmed'],
+            'username' => 'required|string|max:255|unique:users,username,' . $this->route('officer')->user->id,
         ];
     }
 }

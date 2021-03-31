@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Laravel\Fortify\Rules\Password;
 
-class StoreTuitionRequest extends FormRequest
+class StoreOfficerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +25,9 @@ class StoreTuitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'tahun' => 'required|max:11',
-            'nominal' => 'required|max:11',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'password' => ['required', 'string', new Password, 'confirmed'],
         ];
     }
 }

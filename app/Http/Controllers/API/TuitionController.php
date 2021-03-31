@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTuitionRequest;
-use App\Http\Requests\UpdateTuitionRequest;
+use App\Http\Requests\API\StoreTuitionRequest;
+use App\Http\Requests\API\UpdateTuitionRequest;
 use App\Http\Resources\TuitionCollection;
 use App\Http\Resources\TuitionResource;
 use App\Models\Tuition;
@@ -26,7 +26,7 @@ class TuitionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTuitionRequest  $request
+     * @param  \App\Http\Requests\API\StoreTuitionRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTuitionRequest $request)
@@ -49,7 +49,7 @@ class TuitionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTuitionRequest  $request
+     * @param  \App\Http\Requests\API\UpdateTuitionRequest  $request
      * @param  \App\Models\Tuition  $tuition
      * @return \Illuminate\Http\Response
      */

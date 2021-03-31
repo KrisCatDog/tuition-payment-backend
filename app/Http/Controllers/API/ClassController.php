@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreClassRequest;
-use App\Http\Requests\UpdateClassRequest;
+use App\Http\Requests\API\StoreClassRequest;
+use App\Http\Requests\API\UpdateClassRequest;
 use App\Http\Resources\ClassCollection;
 use App\Http\Resources\ClassResource;
 use App\Models\IClass;
@@ -26,7 +26,7 @@ class ClassController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreClassRequest  $request
+     * @param  \App\Http\Requests\API\StoreClassRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreClassRequest $request)
@@ -49,7 +49,7 @@ class ClassController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateClassRequest  $request
+     * @param  \App\Http\Requests\API\UpdateClassRequest  $request
      * @param  \App\Models\IClass  $class
      * @return \Illuminate\Http\Response
      */

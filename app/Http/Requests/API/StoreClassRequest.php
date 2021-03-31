@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePaymentRequest extends FormRequest
+class StoreClassRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class StorePaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_id' => 'required',
-            'jumlah_bayar' => 'required|max:11',
+            'major_id' => 'required',
+            'nama_kelas' => 'required|string|max:255',
         ];
     }
 }
