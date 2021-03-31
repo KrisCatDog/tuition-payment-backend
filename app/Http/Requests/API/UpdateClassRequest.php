@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateMajorRequest extends FormRequest
+class UpdateClassRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class UpdateMajorRequest extends FormRequest
     public function rules()
     {
         return [
-            'kompetensi_keahlian' => 'required|string|max:255'
+            'major_id' => 'required',
+            'nama_kelas' => 'required|string|max:255',
         ];
     }
 }

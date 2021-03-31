@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreMajorRequest;
-use App\Http\Requests\UpdateMajorRequest;
+use App\Http\Requests\API\StoreMajorRequest;
+use App\Http\Requests\API\UpdateMajorRequest;
 use App\Http\Resources\MajorCollection;
 use App\Http\Resources\MajorResource;
 use App\Models\Major;
@@ -26,7 +26,7 @@ class MajorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMajorRequest  $request
+     * @param  \App\Http\Requests\API\StoreMajorRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreMajorRequest $request)
@@ -48,7 +48,7 @@ class MajorController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMajorRequest  $request
+     * @param  \App\Http\Requests\API\UpdateMajorRequest  $request
      * @param  \App\Models\Major  $major
      * @return \Illuminate\Http\Response
      */

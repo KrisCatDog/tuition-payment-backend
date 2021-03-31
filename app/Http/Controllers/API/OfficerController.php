@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreOfficerRequest;
-use App\Http\Requests\UpdateOfficerRequest;
+use App\Http\Requests\API\StoreOfficerRequest;
+use App\Http\Requests\API\UpdateOfficerRequest;
 use App\Http\Resources\OfficerCollection;
 use App\Http\Resources\OfficerResource;
 use App\Models\Officer;
@@ -27,7 +27,7 @@ class OfficerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOfficerRequest  $request
+     * @param  \App\Http\Requests\API\StoreOfficerRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreOfficerRequest $request)
