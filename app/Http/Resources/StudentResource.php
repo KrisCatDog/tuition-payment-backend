@@ -21,8 +21,8 @@ class StudentResource extends JsonResource
             'tuition' => new TuitionResource($this->tuition),
             'nisn' => $this->nisn,
             'nis' => $this->nis,
-            'alamat' => $this->alamat,
-            'no_telp' => $this->no_telp,
+            'address' => $this->address,
+            'telp_number' => $this->telp_number,
             'created_at' => $this->created_at->toFormattedDateString(),
             'updated_at' => $this->updated_at->toFormattedDateString(),
         ];
