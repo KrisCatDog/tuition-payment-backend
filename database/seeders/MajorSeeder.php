@@ -15,7 +15,7 @@ class MajorSeeder extends Seeder
     public function run()
     {
         Major::create([
-            'kompetensi_keahlian' => 'RPL'
+            'name' => 'RPL'
         ]);
     }
 }
