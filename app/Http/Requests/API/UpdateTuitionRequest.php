@@ -24,8 +24,8 @@ class UpdateTuitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'tahun' => 'required|max:11',
-            'nominal' => 'required|max:11',
+            'year' => 'required|max:11',
+            'amount' => 'required|max:11',
         ];
     }
 }

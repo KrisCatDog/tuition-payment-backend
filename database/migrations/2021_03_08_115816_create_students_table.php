@@ -20,8 +20,8 @@ class CreateStudentsTable extends Migration
             $table->foreignId('tuition_id')->constrained()->onDelete('cascade');
             $table->string('nisn');
             $table->string('nis');
-            $table->text('alamat');
-            $table->string('no_telp');
+            $table->text('address');
+            $table->string('telp_number');
             $table->timestamps();
         });
     }
