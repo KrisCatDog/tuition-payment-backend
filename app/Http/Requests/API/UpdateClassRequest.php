@@ -25,7 +25,8 @@ class UpdateClassRequest extends FormRequest
     {
         return [
             'major_id' => 'required',
-            'nama_kelas' => 'required|string|max:255',
+            'grade' => 'required|string|max:255',
+            'code' => 'required|max:11',
         ];
     }
 }

@@ -32,8 +32,8 @@ class StoreStudentRequest extends FormRequest
             'tuition_id' => 'required',
             'nisn' => 'required|max:255',
             'nis' => 'required|max:255',
-            'alamat' => 'required|string',
-            'no_telp' => 'required|max:255',
+            'address' => 'required|string',
+            'telp_number' => 'required|max:255',
         ];
     }
 }

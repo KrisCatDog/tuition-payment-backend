@@ -22,8 +22,8 @@ class TuitionFactory extends Factory
     public function definition()
     {
         return [
-            'tahun' => $this->faker->year,
-            'nominal' => $this->faker->randomNumber(),
+            'year' => $this->faker->year,
+            'amount' => $this->faker->randomNumber(),
         ];
     }
 }

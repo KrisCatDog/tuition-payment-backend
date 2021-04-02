@@ -24,7 +24,7 @@ class UpdateMajorRequest extends FormRequest
     public function rules()
     {
         return [
-            'kompetensi_keahlian' => 'required|string|max:255'
+            'name' => 'required|string|max:255'
         ];
     }
 }
