@@ -16,8 +16,8 @@ class TuitionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'tahun' => $this->tahun,
-            'nominal' => $this->nominal,
+            'year' => $this->year,
+            'amount' => $this->amount,
             'created_at' => $this->created_at->toFormattedDateString(),
             'updated_at' => $this->updated_at->toFormattedDateString(),
         ];

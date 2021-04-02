@@ -15,8 +15,8 @@ class CreateTuitionsTable extends Migration
     {
         Schema::create('tuitions', function (Blueprint $table) {
             $table->id();
-            $table->integer('tahun');
-            $table->integer('nominal');
+            $table->integer('year');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

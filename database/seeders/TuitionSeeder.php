@@ -15,8 +15,8 @@ class TuitionSeeder extends Seeder
     public function run()
     {
         Tuition::create([
-            'tahun' => 2021,
-            'nominal' => 300000,
+            'year' => 2021,
+            'amount' => 300000,
         ]);
     }
 }
