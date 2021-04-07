@@ -17,6 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->foreignId('officer_id')->constrained()->onDelete('cascade');
             $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tuition_id')->constrained()->onDelete('cascade');
             $table->integer('amount_paid');
             $table->timestamp('paid_at');
             $table->timestamps();

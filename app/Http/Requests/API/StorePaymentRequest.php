@@ -25,6 +25,7 @@ class StorePaymentRequest extends FormRequest
     {
         return [
             'student_id' => 'required',
+            'tuition_id' => 'required',
             'amount_paid' => 'required|max:11',
         ];
     }
