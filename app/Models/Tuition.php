@@ -11,6 +11,12 @@ class Tuition extends Model
 
     protected $guarded = [];
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('year', 'LIKE', "%$search%")
+            ->orWhere('amount', 'LIKE', "%$search%");
+    }
+
     public function students()
     {
         return $this->hasMany(Student::class);
