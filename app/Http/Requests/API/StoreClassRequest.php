@@ -29,4 +29,18 @@ class StoreClassRequest extends FormRequest
             'code' => 'required|max:11',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'major_id.required' => 'Jurusan tidak boleh kosong.',
+            'grade.required' => 'Tingkatan kelas tidak boleh kosong.',
+            'code.required' => 'Nomor kelas tidak boleh kosong.',
+        ];
+    }
 }
