@@ -12,6 +12,18 @@ class IClass extends Model
     protected $table = 'classes';
     protected $guarded = [];
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('grade', 'LIKE', "%$search%")
+            ->orWhere('code', 'LIKE', "%$search%")
+            ->orWhereHas(
+                'major',
+                function ($major) use ($search) {
+                    $major->where('name', 'LIKE', "%$search%");
+                }
+            );
+    }
+
     public function major()
     {
         return $this->belongsTo(Major::class);
