@@ -11,6 +11,11 @@ class Major extends Model
 
     protected $guarded = [];
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('name', 'LIKE', "%$search%");
+    }
+
     public function classes()
     {
         return $this->hasMany(IClass::class);
