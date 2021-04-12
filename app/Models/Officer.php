@@ -11,6 +11,21 @@ class Officer extends Model
 
     protected $guarded = [];
 
+    public function scopeSearch($query, $search)
+    {
+        return $query
+            ->whereHas(
+                'user',
+                function ($user) use ($search) {
+                    $user->where('name', 'LIKE', "%$search%")
+                        ->orWhere('username', 'LIKE', "%$search%")
+                        ->orWhereHas('role', function ($role) use ($search) {
+                            $role->where('name', 'LIKE', "%$search%");
+                        });
+                }
+            );
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
