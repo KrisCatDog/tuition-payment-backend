@@ -18,6 +18,7 @@ class OfficerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->user->name,
             'username' => $this->user->username,
+            'role' => new RoleResource($this->user->role),
             'created_at' => $this->created_at->toFormattedDateString(),
             'updated_at' => $this->updated_at->toFormattedDateString(),
         ];

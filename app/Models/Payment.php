@@ -15,6 +15,26 @@ class Payment extends Model
         'paid_at' => 'datetime',
     ];
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('amount_paid', 'LIKE', "%$search%")
+            ->orWhereHas(
+                'officer',
+                function ($officer) use ($search) {
+                    $officer->whereHas('user', function ($user) use ($search) {
+                        $user->where('name', 'LIKE', "%$search%");
+                    });
+                }
+            )->orWhereHas(
+                'student',
+                function ($officer) use ($search) {
+                    $officer->whereHas('user', function ($user) use ($search) {
+                        $user->where('name', 'LIKE', "%$search%");
+                    });
+                }
+            );
+    }
+
     public function officer()
     {
         return $this->belongsTo(Officer::class);
