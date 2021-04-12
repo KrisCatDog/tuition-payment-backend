@@ -21,7 +21,7 @@ class Student extends Model
                 'user',
                 function ($user) use ($search) {
                     $user->where('name', 'LIKE', "%$search%")
-                        ->orWhere('username', 'LIKE', '%$search%');
+                        ->orWhere('username', 'LIKE', "%$search%");
                 }
             )
             ->orWhereHas(
