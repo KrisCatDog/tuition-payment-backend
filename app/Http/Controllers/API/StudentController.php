@@ -22,7 +22,10 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        return new StudentCollection(Student::with('user', 'class', 'tuition', 'user.role')->latest()->paginate($request->per_page));
+        return new StudentCollection(
+            Student::with('user', 'class', 'tuition', 'user.role', 'class.major')
+                ->search($request->search)->latest()->paginate($request->per_page)
+        );
     }
 
     /**
