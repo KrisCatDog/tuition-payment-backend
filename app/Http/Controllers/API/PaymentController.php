@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Exports\PaymentsExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\StorePaymentRequest;
 use App\Http\Resources\PaymentCollection;
@@ -9,6 +10,7 @@ use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaymentController extends Controller
 {
@@ -52,5 +54,10 @@ class PaymentController extends Controller
     public function show(Payment $payment)
     {
         return new PaymentResource($payment->load('officer', 'student'));
+    }
+
+    public function export(Request $request)
+    {
+        return Excel::download(new PaymentsExport($request->start_date, $request->end_date), 'Laporan Pembayaran SPP.xlsx');
     }
 }
