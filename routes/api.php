@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ClassController;
+use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\API\MajorController;
 use App\Http\Controllers\API\OfficerController;
 use App\Http\Controllers\API\PaymentController;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'authenticated']);
+    Route::get('home', [HomeController::class, 'index']);
     Route::apiResource('students', StudentController::class);
     Route::apiResource('tuitions', TuitionController::class);
     Route::apiResource('classes', ClassController::class);

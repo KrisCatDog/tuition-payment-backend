@@ -7,6 +7,7 @@ use App\Http\Requests\API\StorePaymentRequest;
 use App\Http\Resources\PaymentCollection;
 use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -19,7 +20,10 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
-        return new PaymentCollection(Payment::with('officer', 'student')->latest()->paginate($request->per_page));
+        return new PaymentCollection(
+            Payment::with('officer', 'student', 'officer.user', 'student.user')
+                ->search($request->search)->latest()->paginate($request->per_page)
+        );
     }
 
     /**
@@ -30,9 +34,12 @@ class PaymentController extends Controller
      */
     public function store(StorePaymentRequest $request)
     {
-        return (new PaymentResource(auth()->user()->officer->payments()->create(
-            array_merge($request->validated(), ['paid_at' => now()])
-        )->load('officer', 'student')))
+        $student = Student::find($request->student_id);
+        $payment = auth()->user()->officer->payments()->create(
+            array_merge($request->validated(), ['paid_at' => now(), 'tuition_id' => $student->tuition->id])
+        )->load('officer', 'student');
+
+        return (new PaymentResource($payment))
             ->additional(['message' => "Payment has been Submitted successfully"]);
     }
 
