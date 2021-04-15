@@ -19,7 +19,9 @@ class PaymentResource extends JsonResource
             'officer' => new OfficerResource($this->officer),
             'student' => new StudentResource($this->student),
             'amount_paid' => $this->amount_paid,
-            'paid_at' => $this->paid_at->toFormattedDateString(),
+            'bills_date' => $this->bills_date->isoFormat('MMMM Y'),
+            'paid_on' => $this->paid_at->isoFormat('dddd, d MMMM Y'),
+            'paid_at' => $this->paid_at->format('H:i:s'),
             'created_at' => $this->created_at->toFormattedDateString(),
             'updated_at' => $this->updated_at->toFormattedDateString(),
         ];
