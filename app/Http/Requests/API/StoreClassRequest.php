@@ -26,7 +26,7 @@ class StoreClassRequest extends FormRequest
         return [
             'major_id' => 'required',
             'grade' => 'required|string|max:255',
-            'code' => 'required|max:11',
+            'code' => 'required|numeric|max:11',
         ];
     }
 

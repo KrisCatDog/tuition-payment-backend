@@ -13,6 +13,7 @@ class Payment extends Model
 
     protected $casts = [
         'paid_at' => 'datetime',
+        'bills_date' => 'date',
     ];
 
     public function scopeSearch($query, $search)

@@ -29,5 +29,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('classes', ClassController::class);
     Route::apiResource('majors', MajorController::class);
     Route::apiResource('officers', OfficerController::class);
+    Route::get('payments/export', [PaymentController::class, 'export']);
     Route::apiResource('payments', PaymentController::class, ['except' => ['update', 'destroy']]);
 });
