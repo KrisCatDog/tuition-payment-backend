@@ -22,7 +22,7 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-            'officer_id' => 1,
+            'officer_id' => 2,
             'student_id' => 1,
             'tuition_id' => 1,
             'amount_paid' => 300000,
