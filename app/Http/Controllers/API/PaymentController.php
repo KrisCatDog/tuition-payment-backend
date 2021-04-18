@@ -23,10 +23,28 @@ class PaymentController extends Controller
      */
     public function index(Request $request)
     {
-        return new PaymentCollection(
-            Payment::with('officer', 'student', 'officer.user', 'student.user')
-                ->search($request->search)->latest()->paginate($request->per_page)
-        );
+        $payments = [];
+
+        if ($request->user()->role->name === 'administrator') {
+            $payments = Payment::with('officer', 'student', 'officer.user', 'student.user')
+                ->search($request->search)
+                ->latest()
+                ->paginate($request->per_page);
+        } else if ($request->user()->role->name === 'petugas') {
+            $payments = $request->user()->officer->payments()
+                ->with('officer', 'student', 'officer.user', 'student.user')
+                ->search($request->search)
+                ->latest()
+                ->paginate($request->per_page);
+        } else if ($request->user()->role->name === 'siswa') {
+            $payments = $request->user()->student->payments()
+                ->with('officer', 'student', 'officer.user', 'student.user')
+                ->search($request->search)
+                ->latest()
+                ->paginate($request->per_page);
+        }
+
+        return new PaymentCollection($payments);
     }
 
     /**
