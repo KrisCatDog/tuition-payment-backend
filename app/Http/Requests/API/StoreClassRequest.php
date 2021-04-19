@@ -40,7 +40,10 @@ class StoreClassRequest extends FormRequest
         return [
             'major_id.required' => 'Jurusan tidak boleh kosong.',
             'grade.required' => 'Tingkatan kelas tidak boleh kosong.',
+            'grade.max' => 'Tingkatan kelas melebihi batas maksimal karakter.',
             'code.required' => 'Nomor kelas tidak boleh kosong.',
+            'code.numeric' => 'Nomor kelas harus berupa angka.',
+            'code.max' => 'Nomor kelas melebihi batas maksimal karakter.',
         ];
     }
 }

@@ -28,4 +28,18 @@ class UpdateOfficerRequest extends FormRequest
             'username' => 'required|string|max:255|unique:users,username,' . $this->route('officer')->user->id,
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'username.required' => 'Username tidak boleh kosong.',
+            'password.required' => 'Password tidak boleh kosong.',
+        ];
+    }
 }

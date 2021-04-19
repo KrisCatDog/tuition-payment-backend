@@ -36,4 +36,24 @@ class StoreStudentRequest extends FormRequest
             'telp_number' => 'required|max:255',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'username.required' => 'Username tidak boleh kosong.',
+            'password.required' => 'Password tidak boleh kosong.',
+            'class_id.required' => 'Pilih kelas yang terkait dengan siswa.',
+            'tuition_id.required' => 'Pilih biaya spp yang terkait dengan siswa.',
+            'nisn.required' => 'NISN tidak boleh kosong.',
+            'nis.required' => 'NIS tidak boleh kosong.',
+            'address.required' => 'Alamat tidak boleh kosong.',
+            'telp_number.required' => 'No telepon tidak boleh kosong.',
+        ];
+    }
 }
