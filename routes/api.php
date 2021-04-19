@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'authenticated']);
     Route::get('home', [HomeController::class, 'index']);
@@ -30,5 +31,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('majors', MajorController::class);
     Route::apiResource('officers', OfficerController::class);
     Route::get('payments/export', [PaymentController::class, 'export']);
+    Route::get('payments/exportpdf', [PaymentController::class, 'exportPDF']);
     Route::apiResource('payments', PaymentController::class, ['except' => ['update', 'destroy']]);
 });

@@ -24,11 +24,8 @@ class PaymentsExport implements FromCollection, WithHeadings, WithMapping
     public function collection()
     {
         return Payment::with('student', 'student.user', 'officer', 'officer.user')
-            ->when($this->startDate != "null", function ($query) {
-                $query->where('created_at', '>=', $this->startDate);
-            })
-            ->when($this->endDate != "null", function ($query) {
-                $query->where('created_at', '<=', $this->endDate);
+            ->when($this->startDate != "" && $this->endDate != "", function ($query) {
+                $query->whereBetween('paid_at', [$this->startDate . ' 00:00:00', $this->endDate . ' 23:59:59']);
             })
             ->get();
     }

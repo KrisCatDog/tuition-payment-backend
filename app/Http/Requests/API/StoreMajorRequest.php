@@ -27,4 +27,18 @@ class StoreMajorRequest extends FormRequest
             'name' => 'required|string|max:255'
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama jurusan tidak boleh kosong.',
+            'name.string' => 'Nama jurusan tidak boleh berupa angka.',
+            'name.max' => 'Nama jurusan melebihi batas maksimal karakter.',
+        ];
+    }
 }

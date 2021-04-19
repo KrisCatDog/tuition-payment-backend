@@ -30,4 +30,18 @@ class StoreOfficerRequest extends FormRequest
             'password' => ['required', 'string', new Password, 'confirmed'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama tidak boleh kosong.',
+            'username.required' => 'Username tidak boleh kosong.',
+            'password.required' => 'Password tidak boleh kosong.',
+        ];
+    }
 }
