@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\Tuition::factory(100)->create();
         $this->call([
-            // MajorSeeder::class,
-            // ClassSeeder::class,
-            // TuitionSeeder::class,
+            MajorSeeder::class,
+            ClassSeeder::class,
+            TuitionSeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
             UserSeeder::class,

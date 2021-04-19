@@ -16,8 +16,8 @@ class ClassSeeder extends Seeder
     {
         IClass::create([
             'major_id' => 1,
-            'grade' => 'XI',
-            'code' => '1'
+            'grade' => 'XII',
+            'code' => '2'
         ]);
     }
 }
