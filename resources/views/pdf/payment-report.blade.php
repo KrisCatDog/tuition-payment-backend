@@ -83,7 +83,7 @@
                 Telepon/Faksimili: (022) 7332252 - Bandung 40286 Email: smk13bdg@gmail.com
             </p>
             <p class="header-text">
-                Home Page: http://www.smkn13.sch.id
+                Home Page: http://www.smkn-13bdg.sch.id
             </p>
         </div>
     </div>
