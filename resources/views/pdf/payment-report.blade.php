@@ -14,12 +14,13 @@
         .header {
             display: flex;
             flex-direction: row;
+            margin-bottom: 16px;
         }
 
         .header-logo {
             position: absolute;
             top: -16px;
-            width: 150px;
+            width: 140px;
         }
 
         .header-content {
@@ -33,24 +34,25 @@
             font-size: 14px;
         }
 
-        table {
+        .payments {
             margin-top: 24px;
+            margin-bottom: 24px;
             border-collapse: collapse;
             width: 100%;
         }
 
-        table td,
-        table th {
+        .payments td,
+        .payments th {
             font-size: 14px;
             border: 1px solid #ddd;
             padding: 8px;
         }
 
-        table tr:nth-child(even) {
+        .payments tr:nth-child(even) {
             background-color: #f2f2f2;
         }
 
-        table th {
+        .payments th {
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
@@ -72,9 +74,6 @@
                 DINAS PENDIDIKAN
             </h3>
             <h3 style="text-align: center; margin: 0; margin-bottom: 2px;">
-                CABANG DINAS PENDIDIKAN WILAYAH VII
-            </h3>
-            <h3 style="text-align: center; margin: 0; margin-bottom: 2px;">
                 SEKOLAH MENENGAH KEJURUAN NEGERI 13
             </h3>
             <p class="header-text">
@@ -89,14 +88,25 @@
         </div>
     </div>
 
-    <hr style="border: 2px solid #000">
+    <hr style="border: 2px solid #000;">
 
     <div>
-        <h3 style="margin-bottom: 8px;">Laporan Pembayaran SPP</h3>
-        <p style="font-size: 14px; margin: 0; margin-bottom: 2px;">Dari tanggal : 5 April 2020</p>
-        <p style="font-size: 14px; margin: 0; margin-bottom: 2px;">Sampai tanggal : 5 April 2020</p>
+        <h2 style="margin-bottom: 32px; text-align: center;">Laporan Pembayaran SPP</h2>
 
         <table>
+            <tr style="font-size: 14px; margin: 0; margin-bottom: 2px;">
+                <td>Dari Tanggal</td>
+                <td>:</td>
+                <td>{{ $startDate }}</td>
+            </tr>
+            <tr style="font-size: 14px; margin: 0; margin-bottom: 2px;">
+                <td>Sampai Tanggal</td>
+                <td>:</td>
+                <td>{{ $endDate }}</td>
+            </tr>
+        </table>
+
+        <table class="payments">
             <tr>
                 <th>No</th>
                 <th>Nama Siswa</th>
@@ -117,6 +127,19 @@
                 <td>{{ $payment->paid_at->format('H:i:s') }}</td>
             </tr>
             @endforeach
+        </table>
+
+        <table>
+            <tr style="font-size: 14px; margin: 0; margin-bottom: 2px;">
+                <td>Di Export Pada</td>
+                <td>:</td>
+                <td>{{ $createdAt }}</td>
+            </tr>
+            <tr style="font-size: 14px; margin: 0; margin-bottom: 2px;">
+                <td>Oleh</td>
+                <td>:</td>
+                <td>{{ $user->name }}</td>
+            </tr>
         </table>
     </div>
 </body>

@@ -10,6 +10,7 @@ use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use App\Models\Student;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -86,12 +87,16 @@ class PaymentController extends Controller
     public function exportPDF(Request $request)
     {
         $data = [
-            'logo' => public_path('img/logo.jpg'),
+            'logo' => public_path('img/logo-13.png'),
             'payments' => Payment::with('officer', 'student', 'officer.user', 'student.user')
                 ->when($request->start_date != "" && $request->end_date != "", function ($query) use ($request) {
                     $query->whereBetween('paid_at', [$request->start_date . ' 00:00:00', $request->end_date . ' 23:59:59']);
                 })
-                ->get()
+                ->get(),
+            'startDate' => $request->start_date != "" ? Carbon::parse($request->start_date)->isoFormat('dddd, D MMMM Y') : '-',
+            'endDate' => $request->end_date != "" ? Carbon::parse($request->end_date)->isoFormat('dddd, D MMMM Y') : '-',
+            'createdAt' => now()->isoFormat('dddd, D MMMM Y') . ' ' . now()->format('H:i:s'),
+            'user' => $request->user(),
         ];
 
         $pdf = PDF::loadView('pdf.payment-report', $data);
