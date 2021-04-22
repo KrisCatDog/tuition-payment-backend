@@ -21,9 +21,9 @@ class HomeController extends Controller
         return new HomeResource($data);
     }
 
-    public function getTodayPayments() 
+    public function getTodayPayments()
     {
-    	return new PaymentCollection(
+        return new PaymentCollection(
             Payment::with('officer', 'student', 'officer.user', 'student.user')->whereDate('paid_at', today())->latest()->paginate(10)
         );
     }
