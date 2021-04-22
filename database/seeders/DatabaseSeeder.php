@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PermissionRoleSeeder::class,
         ]);
-        // \App\Models\Payment::factory(100)->create();
+        \App\Models\Payment::factory(100)->create();
     }
 }

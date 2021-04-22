@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'authenticated']);
     Route::get('home', [HomeController::class, 'index']);
+    Route::get('get-today-payments', [HomeController::class, 'getTodayPayments']);
     Route::apiResource('students', StudentController::class);
     Route::apiResource('tuitions', TuitionController::class);
     Route::apiResource('classes', ClassController::class);
